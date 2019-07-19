@@ -12,7 +12,7 @@
 CREATE TABLE "zonaGeografica"
 (
   "IdZonaGeografica" SERIAL NOT NULL,
-  "NomZG" VARCHAR(50) NOT NULL,
+  "NomZG" VARCHAR(50) NOT NULL, 
   "CodZG" INTEGER NOT NULL,
   "FkTipoCod" INTEGER NOT NULL,
   CONSTRAINT "zonaGeografica_Pk" PRIMARY KEY ("CodZG", "FkTipoCod"),
