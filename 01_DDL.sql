@@ -41,3 +41,37 @@ CREATE TABLE "cambioCobertura"
 );
 
 SELECT AddGeometryColumn('', 'cambioCobertura', 'geom', '4326', 'MULTIPOLYGON', 2);
+
+
+﻿﻿CREATE TABLE "TipoCobertura"
+(
+  "IdCodCobertura" INTEGER NOT NULL,
+  "NomCobertura" VARCHAR(50) NOT NULL,
+  CONSTRAINT "TipoCobertura_Pk" PRIMARY KEY ("IdCodCobertura")     
+);
+
+
+CREATE TABLE "cobertura"
+(
+  "IdCobertura" SERIAL NOT NULL,
+  "FKCodCobertura"  INTEGER NOT NULL,
+  "fecha" DATE NOT NULL,
+  CONSTRAINT "cobertura_Pk" PRIMARY KEY ("IdCobertura"),
+  CONSTRAINT "cobertura_TipoCobertura" FOREIGN KEY ("FKCodCobertura") REFERENCES "TipoCobertura" ("IdCodCobertura")
+);
+
+SELECT AddGeometryColumn('', 'cobertura', 'geom', '4326', 'MULTIPOLYGON', 2);
+
+
+CREATE TABLE "intervencion"
+(
+  "IdIntervencion" SERIAL NOT NULL,
+  "gradoInter"  VARCHAR(50) NOT NULL,
+  "fecha" DATE NOT NULL,
+  CONSTRAINT "intervencion_Pk" PRIMARY KEY ("IdIntervencion")
+);
+
+SELECT AddGeometryColumn('', 'intervencion', 'geom', '4326', 'MULTIPOLYGON', 2);
+
+
+

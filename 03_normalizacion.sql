@@ -329,3 +329,219 @@ DROP TABLE "quemas";
 
 
 ﻿/* ******************************************* cobertura ******************************************* */
+
+
+/** BOSQUE NO BOSQUE 2012**/
+
+SELECT 
+	c.dn,
+	ST_UNION(ST_Transform(c.geom, 4326)) as geom
+INTO tablaaux
+FROM bnb2012 c
+WHERE c.dn=127 OR c.dn=254
+GROUP BY c.dn;
+
+UPDATE tablaaux SET geom = ST_Force2D(geom);
+SELECT UpdateGeometrySRID('tablaaux', 'geom', '4326');
+ALTER TABLE tablaaux ALTER COLUMN geom 
+TYPE geometry(MultiPolygon, 4326) USING ST_Multi(geom);
+
+ALTER TABLE "tablaaux" ADD COLUMN  "FKCodCobertura"  INTEGER; 
+UPDATE "tablaaux" SET "FKCodCobertura"=1 where dn=127; 
+UPDATE "tablaaux" SET "FKCodCobertura"=2 where dn=254;
+
+
+ALTER TABLE "tablaaux" ADD COLUMN  "fecha" DATE;
+UPDATE "tablaaux" SET "fecha"= '31/12/2012'; 
+
+
+INSERT INTO "cobertura" ("FKCodCobertura" ,"fecha" , geom )
+SELECT   "FKCodCobertura"  , "fecha" , geom
+FROM "tablaaux";
+DROP TABLE "tablaaux";
+DROP TABLE "bnb2012";
+
+
+/** BOSQUE NO BOSQUE 2013**/
+
+SELECT 
+	c.dn,
+	ST_UNION(ST_Transform(c.geom, 4326)) as geom
+INTO tablaaux
+FROM bnb2013 c
+WHERE c.dn=127 OR c.dn=254
+GROUP BY c.dn;
+
+UPDATE tablaaux SET geom = ST_Force2D(geom);
+SELECT UpdateGeometrySRID('tablaaux', 'geom', '4326');
+ALTER TABLE tablaaux ALTER COLUMN geom 
+TYPE geometry(MultiPolygon, 4326) USING ST_Multi(geom);
+
+ALTER TABLE "tablaaux" ADD COLUMN  "FKCodCobertura"  INTEGER; 
+UPDATE "tablaaux" SET "FKCodCobertura"=1 where dn=127; 
+UPDATE "tablaaux" SET "FKCodCobertura"=2 where dn=254;
+
+
+ALTER TABLE "tablaaux" ADD COLUMN  "fecha" DATE;
+UPDATE "tablaaux" SET "fecha"= '31/12/2013'; 
+
+
+INSERT INTO "cobertura" ("FKCodCobertura" ,"fecha" , geom )
+SELECT   "FKCodCobertura"  , "fecha" , geom
+FROM "tablaaux";
+DROP TABLE "tablaaux";
+DROP TABLE "bnb2013";
+
+
+
+/** BOSQUE NO BOSQUE 2014 **/
+
+SELECT 
+	c.dn,
+	ST_UNION(ST_Transform(c.geom, 4326)) as geom
+INTO tablaaux
+FROM bnb2014 c
+WHERE c.dn=127 OR c.dn=254
+GROUP BY c.dn;
+
+UPDATE tablaaux SET geom = ST_Force2D(geom);
+SELECT UpdateGeometrySRID('tablaaux', 'geom', '4326');
+ALTER TABLE tablaaux ALTER COLUMN geom 
+TYPE geometry(MultiPolygon, 4326) USING ST_Multi(geom);
+
+ALTER TABLE "tablaaux" ADD COLUMN  "FKCodCobertura"  INTEGER; 
+UPDATE "tablaaux" SET "FKCodCobertura"=1 where dn=127; 
+UPDATE "tablaaux" SET "FKCodCobertura"=2 where dn=254;
+
+
+ALTER TABLE "tablaaux" ADD COLUMN  "fecha" DATE;
+UPDATE "tablaaux" SET "fecha"= '31/12/2014'; 
+
+
+INSERT INTO "cobertura" ("FKCodCobertura" ,"fecha" , geom )
+SELECT   "FKCodCobertura"  , "fecha" , geom
+FROM "tablaaux";
+DROP TABLE "tablaaux";
+DROP TABLE "bnb2014";
+
+
+/** BOSQUE NO BOSQUE 2015 **/
+
+SELECT 
+	c.dn,
+	ST_UNION(ST_Transform(c.geom, 4326)) as geom
+INTO tablaaux
+FROM bnb2015 c
+WHERE c.dn=127 OR c.dn=254
+GROUP BY c.dn;
+
+UPDATE tablaaux SET geom = ST_Force2D(geom);
+SELECT UpdateGeometrySRID('tablaaux', 'geom', '4326');
+ALTER TABLE tablaaux ALTER COLUMN geom 
+TYPE geometry(MultiPolygon, 4326) USING ST_Multi(geom);
+
+ALTER TABLE "tablaaux" ADD COLUMN  "FKCodCobertura"  INTEGER; 
+UPDATE "tablaaux" SET "FKCodCobertura"=1 where dn=127; 
+UPDATE "tablaaux" SET "FKCodCobertura"=2 where dn=254;
+
+
+ALTER TABLE "tablaaux" ADD COLUMN  "fecha" DATE;
+UPDATE "tablaaux" SET "fecha"= '31/12/2015'; 
+
+
+INSERT INTO "cobertura" ("FKCodCobertura" ,"fecha" , geom )
+SELECT   "FKCodCobertura"  , "fecha" , geom
+FROM "tablaaux";
+DROP TABLE "tablaaux";
+DROP TABLE "bnb2015";
+
+/** BOSQUE NO BOSQUE 2016 **/
+
+SELECT 
+	c.dn,
+	ST_UNION(ST_Transform(c.geom, 4326)) as geom
+INTO tablaaux
+FROM bnb2016 c
+WHERE c.dn=127 OR c.dn=254
+GROUP BY c.dn;
+
+UPDATE tablaaux SET geom = ST_Force2D(geom);
+SELECT UpdateGeometrySRID('tablaaux', 'geom', '4326');
+ALTER TABLE tablaaux ALTER COLUMN geom 
+TYPE geometry(MultiPolygon, 4326) USING ST_Multi(geom);
+
+ALTER TABLE "tablaaux" ADD COLUMN  "FKCodCobertura"  INTEGER; 
+UPDATE "tablaaux" SET "FKCodCobertura"=1 where dn=127; 
+UPDATE "tablaaux" SET "FKCodCobertura"=2 where dn=254;
+
+
+ALTER TABLE "tablaaux" ADD COLUMN  "fecha" DATE;
+UPDATE "tablaaux" SET "fecha"= '31/12/2016'; 
+
+
+INSERT INTO "cobertura" ("FKCodCobertura" ,"fecha" , geom )
+SELECT   "FKCodCobertura"  , "fecha" , geom
+FROM "tablaaux";
+DROP TABLE "tablaaux";
+DROP TABLE "bnb2016";
+
+/** BOSQUE NO BOSQUE 2017 **/
+
+SELECT 
+	c.dn,
+	ST_UNION(ST_Transform(c.geom, 4326)) as geom
+INTO tablaaux
+FROM bnb2017 c
+WHERE c.dn=127 OR c.dn=254
+GROUP BY c.dn;
+
+UPDATE tablaaux SET geom = ST_Force2D(geom);
+SELECT UpdateGeometrySRID('tablaaux', 'geom', '4326');
+ALTER TABLE tablaaux ALTER COLUMN geom 
+TYPE geometry(MultiPolygon, 4326) USING ST_Multi(geom);
+
+ALTER TABLE "tablaaux" ADD COLUMN  "FKCodCobertura"  INTEGER; 
+UPDATE "tablaaux" SET "FKCodCobertura"=1 where dn=127; 
+UPDATE "tablaaux" SET "FKCodCobertura"=2 where dn=254;
+
+
+ALTER TABLE "tablaaux" ADD COLUMN  "fecha" DATE;
+UPDATE "tablaaux" SET "fecha"= '31/12/2017'; 
+
+
+INSERT INTO "cobertura" ("FKCodCobertura" ,"fecha" , geom )
+SELECT   "FKCodCobertura"  , "fecha" , geom
+FROM "tablaaux";
+DROP TABLE "tablaaux";
+DROP TABLE "bnb2017";
+
+﻿/* ******************************************* intervencion ******************************************* */
+
+
+/** INTERVENCION ANTROPICA 2014 **/
+
+SELECT 
+	CAST(rango AS VARCHAR(50)),
+	ST_UNION(ST_Transform(geom, 4326)) as geom
+INTO tablaaux
+FROM ei2014 
+GROUP BY rango;
+
+UPDATE tablaaux SET geom = ST_Force2D(geom);
+SELECT UpdateGeometrySRID('tablaaux', 'geom', '4326');
+ALTER TABLE tablaaux ALTER COLUMN geom 
+TYPE geometry(MultiPolygon, 4326) USING ST_Multi(geom);
+
+ALTER TABLE "tablaaux" ADD COLUMN  "fecha" DATE;
+UPDATE "tablaaux" SET "fecha"= '31/12/2014'; 
+
+
+INSERT INTO "intervencion" ("gradoInter" ,"fecha" , geom )
+SELECT   "rango", "fecha" , geom
+FROM "tablaaux";
+DROP TABLE "tablaaux";
+DROP TABLE "ei2014";
+
+
+
+
