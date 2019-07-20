@@ -1,4 +1,4 @@
-﻿/* ******************************************* zonaGeografica ******************************************* */
+/* ******************************************* zonaGeografica ******************************************* */
 
 /** SUBZONAS HIDROGRAFICAS **/
 --realizar tabla auxiliar para los datos de subzona hidrografica
@@ -40,7 +40,6 @@ SELECT  "nom_zh", "cod_zh", "FkTipoCod", geom
 FROM "tablaaux_zh";
 
 DROP TABLE "tablaaux_zh";
-DROP TABLE zona_hidrica;
 
 /** DEPARTAMENTOS **/
 SELECT CAST(nmg AS VARCHAR(50)), CAST(cod_dane as INTEGER), geom 
@@ -56,7 +55,6 @@ INSERT INTO "zonaGeografica" ("NomZG", "CodZG", "FkTipoCod", geom )
 SELECT  "nmg", "cod_dane", "FkTipoCod", geom 
 FROM "tablaaux";
 DROP TABLE "tablaaux";
-DROP TABLE "departamentos";
 
 /** ZONIFICACION RESOLUCION 1277 DE 2014 **/
 
@@ -82,10 +80,9 @@ INSERT INTO "zonaGeografica" ("NomZG", "CodZG", "FkTipoCod", geom )
 SELECT  "tipo_zona", "CodZG", "FkTipoCod", geom 
 FROM "tablaaux";
 DROP TABLE "tablaaux";
-DROP TABLE "zonificacion2014";
 
 
-﻿/* ******************************************* cambioCobertura ******************************************* */
+/******************************************** cambioCobertura ******************************************* */
 
 
 /** Cambio de cobertura 2012 2013 **/
@@ -113,7 +110,6 @@ INSERT INTO "cambioCobertura" ("FKCodCambioCobertura", "tiempoInicio", "tiempoFi
 SELECT  "FKCodCambioCobertura", "tiempoInicio", "tiempoFin", geom 
 FROM "tablaaux";
 DROP TABLE "tablaaux";
-DROP TABLE "cb1213";
 
 /** Cambio de cobertura 2013 2014 **/
 
@@ -140,7 +136,6 @@ INSERT INTO "cambioCobertura" ("FKCodCambioCobertura", "tiempoInicio", "tiempoFi
 SELECT  "FKCodCambioCobertura", "tiempoInicio", "tiempoFin", geom 
 FROM "tablaaux";
 DROP TABLE "tablaaux";
-DROP TABLE "cb1314";
 
 /** Cambio de cobertura 2014 2015 **/
 
@@ -167,7 +162,6 @@ INSERT INTO "cambioCobertura" ("FKCodCambioCobertura", "tiempoInicio", "tiempoFi
 SELECT  "FKCodCambioCobertura", "tiempoInicio", "tiempoFin", geom 
 FROM "tablaaux";
 DROP TABLE "tablaaux";
-DROP TABLE "cb1415";
 
 /** Cambio de cobertura 2015 2016 **/
 
@@ -194,7 +188,6 @@ INSERT INTO "cambioCobertura" ("FKCodCambioCobertura", "tiempoInicio", "tiempoFi
 SELECT  "FKCodCambioCobertura", "tiempoInicio", "tiempoFin", geom 
 FROM "tablaaux";
 DROP TABLE "tablaaux";
-DROP TABLE "cb1516";
 
 
 /** Cambio de cobertura 2016 2017 **/
@@ -222,7 +215,6 @@ INSERT INTO "cambioCobertura" ("FKCodCambioCobertura", "tiempoInicio", "tiempoFi
 SELECT  "FKCodCambioCobertura", "tiempoInicio", "tiempoFin", geom 
 FROM "tablaaux";
 DROP TABLE "tablaaux";
-DROP TABLE "cb1617";
 
 /** Alertas tempranas 2013 I**/
 
@@ -246,7 +238,7 @@ INSERT INTO "cambioCobertura" ("FKCodCambioCobertura", "tiempoInicio", "tiempoFi
 SELECT  "FKCodCambioCobertura", "tiempoInicio", "tiempoFin", geom 
 FROM "tablaaux";
 DROP TABLE "tablaaux";
-DROP TABLE "at2013i";
+
 
 /** Alertas tempranas 2013 ii**/
 
@@ -270,7 +262,6 @@ INSERT INTO "cambioCobertura" ("FKCodCambioCobertura", "tiempoInicio", "tiempoFi
 SELECT  "FKCodCambioCobertura", "tiempoInicio", "tiempoFin", geom 
 FROM "tablaaux";
 DROP TABLE "tablaaux";
-DROP TABLE "at2013ii";
 
 /** Alertas tempranas 2014 i**/
 
@@ -294,7 +285,6 @@ INSERT INTO "cambioCobertura" ("FKCodCambioCobertura", "tiempoInicio", "tiempoFi
 SELECT  "FKCodCambioCobertura", "tiempoInicio", "tiempoFin", geom 
 FROM "tablaaux";
 DROP TABLE "tablaaux";
-DROP TABLE "at2014";
 
 
 /** QUEMAS **/
@@ -317,18 +307,17 @@ UPDATE "tablaaux" set  "FKCodCambioCobertura" =2;
  ALTER TABLE "tablaaux" ADD COLUMN  "tiempoInicio" DATE;
  ALTER TABLE "tablaaux" ADD COLUMN "tiempoFin" DATE;
 UPDATE "tablaaux" SET "tiempoInicio"= '1/01/2000';
-UPDATE"tablaaux" SET "tiempoFin"= '31/12/2017';
-
+UPDATE"tablaaux" SET "tiempoFin"= '31/12/2017'; --No se cual funciona
+UPDATE "tablaaux" SET "tiempoFin"= '12/31/2017'; --creo que esta
 
 INSERT INTO"cambioCobertura" 
 ("FKCodCambioCobertura", "tiempoInicio", "tiempoFin", geom )
 SELECT   "FKCodCambioCobertura", "tiempoInicio", "tiempoFin", geom
 FROM "tablaaux";
+
 DROP TABLE "tablaaux";
-DROP TABLE "quemas";
 
-
-﻿/* ******************************************* cobertura ******************************************* */
+/* ******************************************* cobertura ******************************************* */
 
 
 /** BOSQUE NO BOSQUE 2012**/
@@ -352,14 +341,12 @@ UPDATE "tablaaux" SET "FKCodCobertura"=2 where dn=254;
 
 
 ALTER TABLE "tablaaux" ADD COLUMN  "fecha" DATE;
-UPDATE "tablaaux" SET "fecha"= '31/12/2012'; 
-
+UPDATE "tablaaux" SET "fecha"= '12/31/2012'; 
 
 INSERT INTO "cobertura" ("FKCodCobertura" ,"fecha" , geom )
 SELECT   "FKCodCobertura"  , "fecha" , geom
 FROM "tablaaux";
 DROP TABLE "tablaaux";
-DROP TABLE "bnb2012";
 
 
 /** BOSQUE NO BOSQUE 2013**/
@@ -383,14 +370,13 @@ UPDATE "tablaaux" SET "FKCodCobertura"=2 where dn=254;
 
 
 ALTER TABLE "tablaaux" ADD COLUMN  "fecha" DATE;
-UPDATE "tablaaux" SET "fecha"= '31/12/2013'; 
-
+UPDATE "tablaaux" SET "fecha"= '12/31/2012'; 
 
 INSERT INTO "cobertura" ("FKCodCobertura" ,"fecha" , geom )
 SELECT   "FKCodCobertura"  , "fecha" , geom
 FROM "tablaaux";
 DROP TABLE "tablaaux";
-DROP TABLE "bnb2013";
+
 
 
 
@@ -416,18 +402,17 @@ UPDATE "tablaaux" SET "FKCodCobertura"=2 where dn=254;
 
 ALTER TABLE "tablaaux" ADD COLUMN  "fecha" DATE;
 UPDATE "tablaaux" SET "fecha"= '31/12/2014'; 
-
+UPDATE "tablaaux" SET "fecha"= '12/31/2012'; 
 
 INSERT INTO "cobertura" ("FKCodCobertura" ,"fecha" , geom )
 SELECT   "FKCodCobertura"  , "fecha" , geom
 FROM "tablaaux";
 DROP TABLE "tablaaux";
-DROP TABLE "bnb2014";
 
 
 /** BOSQUE NO BOSQUE 2015 **/
 
-SELECT 
+	SELECT 
 	c.dn,
 	ST_UNION(ST_Transform(c.geom, 4326)) as geom
 INTO tablaaux
@@ -453,7 +438,7 @@ INSERT INTO "cobertura" ("FKCodCobertura" ,"fecha" , geom )
 SELECT   "FKCodCobertura"  , "fecha" , geom
 FROM "tablaaux";
 DROP TABLE "tablaaux";
-DROP TABLE "bnb2015";
+
 
 /** BOSQUE NO BOSQUE 2016 **/
 
@@ -476,14 +461,12 @@ UPDATE "tablaaux" SET "FKCodCobertura"=2 where dn=254;
 
 
 ALTER TABLE "tablaaux" ADD COLUMN  "fecha" DATE;
-UPDATE "tablaaux" SET "fecha"= '31/12/2016'; 
-
+UPDATE "tablaaux" SET "fecha"= '12/31/2012'; 
 
 INSERT INTO "cobertura" ("FKCodCobertura" ,"fecha" , geom )
 SELECT   "FKCodCobertura"  , "fecha" , geom
 FROM "tablaaux";
 DROP TABLE "tablaaux";
-DROP TABLE "bnb2016";
 
 /** BOSQUE NO BOSQUE 2017 **/
 
@@ -513,9 +496,8 @@ INSERT INTO "cobertura" ("FKCodCobertura" ,"fecha" , geom )
 SELECT   "FKCodCobertura"  , "fecha" , geom
 FROM "tablaaux";
 DROP TABLE "tablaaux";
-DROP TABLE "bnb2017";
 
-﻿/* ******************************************* intervencion ******************************************* */
+/* ******************************************* intervencion ******************************************* */
 
 
 /** INTERVENCION ANTROPICA 2014 **/
@@ -540,7 +522,6 @@ INSERT INTO "intervencion" ("gradoInter" ,"fecha" , geom )
 SELECT   "rango", "fecha" , geom
 FROM "tablaaux";
 DROP TABLE "tablaaux";
-DROP TABLE "ei2014";
 
 
 
