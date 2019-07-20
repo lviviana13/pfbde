@@ -21,5 +21,6 @@ DROP TABLE "bnb2015";
 DROP TABLE "bnb2016";
 DROP TABLE "bnb2017";
 DROP TABLE "ei2014";
+DROP TABLE "hidroelectricas";
 
 

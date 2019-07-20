@@ -74,4 +74,24 @@ CREATE TABLE "intervencion"
 SELECT AddGeometryColumn('', 'intervencion', 'geom', '4326', 'MULTIPOLYGON', 2);
 
 
+CREATE TABLE "hidroelectrica"
+(
+  "IdHidroelectrica" SERIAL NOT NULL,
+  "estado"  VARCHAR(50),
+  "nombre"  VARCHAR(50) NOT NULL,
+  "institucion"  VARCHAR(50) NOT NULL,
+  "fecha" DATE,
+  CONSTRAINT "hidroelectrica_Pk" PRIMARY KEY ("IdHidroelectrica")
+);
+
+SELECT AddGeometryColumn('', 'hidroelectrica', 'geom', '4326', 'MULTIPOINT', 2);
+
+
+
+
+
+
+
+
+
 
