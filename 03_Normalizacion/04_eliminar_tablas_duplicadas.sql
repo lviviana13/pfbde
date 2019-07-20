@@ -1,0 +1,25 @@
+DROP TABLE "zona_hidrica";
+DROP TABLE "departamentos";
+DROP TABLE "cb1213";
+DROP TABLE zona_hidrica;
+DROP TABLE "departamentos";
+DROP TABLE "zonificacion2014";
+DROP TABLE "cb1213";
+DROP TABLE "tablaaux";
+DROP TABLE "quemas";
+DROP TABLE "at2014";
+DROP TABLE "at2013ii";
+DROP TABLE "at2013i";
+DROP TABLE "cb1617";
+DROP TABLE "cb1516";
+DROP TABLE "cb1415";
+DROP TABLE "cb1314";
+DROP TABLE "bnb2013";
+DROP TABLE "bnb2012";
+DROP TABLE "bnb2014";
+DROP TABLE "bnb2015";
+DROP TABLE "bnb2016";
+DROP TABLE "bnb2017";
+DROP TABLE "ei2014";
+
+
